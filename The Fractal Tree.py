@@ -1,21 +1,20 @@
 import turtle as tu
-tu=turtle.Turtle()
-MINIMUM_BRANCH_LENGTH = 5
-tu.screen.bgcolor('black')
-tu.speed(10)
-def build_tree(t, branch_length, shorten_by, angle):
-    if branch_length > MINIMUM_BRANCH_LENGTH:
+branchs = 5
+def draw_tree(t, branch_length, s, a):
+    # s=  shorten by
+    # a= angle
+    if branch_length > branchs:
         t.forward(branch_length)
-        new_length = branch_length - shorten_by
-        t.left(angle)
-        build_tree(t, new_length, shorten_by, angle)
-        t.right(angle * 2)
-        build_tree(t, new_length, shorten_by, angle)
-        t.left(angle)
+        new_length = branch_length - s
+        t.left(a)
+        draw_tree(t, new_length, s, a)
+        t.right(a * 2)
+        draw_tree(t, new_length, s, a)
+        t.left(a)
         t.backward(branch_length)
 tree = turtle.Turtle()
 tree.hideturtle()
 tree.setheading(90)
-tree.color('yellow')
-build_tree(tree, 50, 5, 30)
+tree.color('green')
+draw_tree(tree, 50, 5, 30)
 turtle.mainloop()
